@@ -614,7 +614,7 @@ function traceHTML(p){
  <p class="note" style="margin-top:12px">Dữ liệu truy xuất trong bản mô phỏng là minh hoạ. Khi triển khai, có thể liên kết với hệ thống truy xuất nguồn gốc của địa phương.</p>`;
 }
 function drawQR(p){const el=document.getElementById("qr-"+p.id);if(!el)return;el.innerHTML="";
- if(window.QRCode){new QRCode(el,{text:"OCOP-HUE|"+p.code+"|"+p.name,width:140,height:140,colorDark:"#2f1a3d",colorLight:"#ffffff"})}
+ if(window.QRCode){try{new QRCode(el,{text:location.href.split("#")[0]+"#truy-xuat?ma="+p.code,width:140,height:140,colorDark:"#2f1a3d",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}catch(e){el.innerHTML="<b>"+p.code+"</b>"}}
  else el.innerHTML='<div style="width:140px;height:140px;border:2px dashed var(--vien);display:flex;align-items:center;justify-content:center">QR</div>';}
 
 /* ===================== TRUY XUẤT ===================== */
@@ -706,7 +706,7 @@ function copyJSON(){copyText(JSON.stringify({chu_the:PRODUCERS,san_pham:PRODUCTS
 /* ===================== ĐIỀU HƯỚNG ===================== */
 const VIEWS=["trang-chu","san-pham","chu-the","truy-xuat","diem-ban","quy-trinh","dang-ky","ve-de-tai"];
 function route(){
- let v=(location.hash||"#trang-chu").slice(1);if(!VIEWS.includes(v))v="trang-chu";
+ let v=(location.hash||"#trang-chu").slice(1);let ma=null;if(v.startsWith("truy-xuat?ma=")){ma=decodeURIComponent(v.split("=")[1]);v="truy-xuat"}if(!VIEWS.includes(v))v="trang-chu";if(ma)setTimeout(()=>doTrace(ma),0);
  document.querySelectorAll(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+v));
  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.v===v));
  document.querySelector("nav").classList.remove("mo");
