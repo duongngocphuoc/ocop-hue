@@ -35,3 +35,21 @@ Muốn dùng tên miền riêng (ví dụ ocophue.vn): mua tên miền rồi kha
   - 115 sản phẩm: Danh sách các sản phẩm OCOP đã được công nhận (đến 9/5/2025).
   - Số liệu tổng hợp: Báo cáo số 2068/BC-SNNMT, Sở Nông nghiệp và Môi trường thành phố Huế.
   - Giá, quy cách, điểm bán và liên kết gian hàng là dữ liệu minh hoạ.
+
+4. THÊM VIDEO YOUTUBE VÀ CÂU CHUYỆN CHO SẢN PHẨM
+
+Cách xem thử ngay (chỉ hiện trên máy của bạn):
+  - Mở sản phẩm > thẻ "Câu chuyện" > mục "Dành cho chủ thể", dán link YouTube, bấm "Xem ngay trên máy này".
+  - Hoặc vào "Dành cho chủ thể", chọn sản phẩm ở mục "Cập nhật sản phẩm đã có", dán link, bấm "Gửi hồ sơ / Cập nhật".
+
+Cách công bố cho mọi người:
+  - Bấm "Sao chép đoạn gửi quản trị" (hoặc "Sao chép toàn bộ nội dung" ở trang Dành cho chủ thể).
+  - Trên GitHub, mở tệp noi-dung.json, bấm biểu tượng bút chì (Edit), dán đoạn vừa sao chép vào trong cặp ngoặc { },
+    cách khối trước bằng dấu phẩy, rồi bấm "Commit changes". Sau 1–2 phút, video hiện cho mọi người.
+  Ví dụ:
+  {
+    "HUE-OCOP-046": {
+      "video": "https://youtu.be/xxxxxxxxxxx",
+      "story": "Đoạn câu chuyện..."
+    }
+  }

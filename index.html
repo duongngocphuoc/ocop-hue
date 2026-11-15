@@ -226,6 +226,9 @@ footer a{color:#f0e2c4;text-decoration:none}
 .gimg{position:relative;aspect-ratio:300/170}.gimg svg,.gimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .gcard figcaption{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px}.gcard figcaption b{font-family:Lora,serif;color:var(--tim-dam)}.gcard figcaption span{font-size:12.5px;color:var(--phu)}
 @media(max-width:900px){.gal{grid-template-columns:1fr 1fr}}@media(max-width:520px){.gal{grid-template-columns:1fr}}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.sedit{margin-top:14px;border:1px dashed var(--vien);border-radius:12px;padding:10px 12px}.sedit summary{cursor:pointer;font-weight:600;color:var(--tim)}
+.sedit label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;margin:8px 0}.sedit input,.sedit textarea{border:1px solid var(--vien);border-radius:8px;padding:8px 10px;font-weight:400;font-family:inherit}
 </style>
 </head>
 <body>
@@ -390,6 +393,8 @@ footer a{color:#f0e2c4;text-decoration:none}
   <p class="lead">Biểu mẫu thể hiện cấu trúc dữ liệu của cổng. Ngoài thông tin kỹ thuật, biểu mẫu có các trường riêng cho “Câu chuyện sản phẩm” (bài viết, video) theo định hướng Marketing 4.0. Sản phẩm gửi lên sẽ xuất hiện trong danh mục với trạng thái “Chờ duyệt”.</p>
   <div class="panel">
   <form class="form" id="reg" onsubmit="event.preventDefault();submitReg(this)">
+    <div class="fs">0. Bạn muốn làm gì?</div>
+    <label class="full">Cập nhật sản phẩm đã có trong danh mục<select name="exist" id="reg-exist" onchange="regMode(this)"><option value="">— Không, đăng ký sản phẩm mới —</option></select><span class="hint">Chọn sản phẩm của bạn để thêm video, câu chuyện, kênh bán. Sản phẩm được cập nhật ngay, không phải chờ duyệt.</span></label>
     <div class="fs">1. Thông tin chủ thể</div>
     <label>Tên chủ thể *<input name="pname" required placeholder="vd: HTX Nông nghiệp …"></label>
     <label>Loại hình<select name="ptype"><option>Hợp tác xã</option><option>Tổ hợp tác</option><option>Doanh nghiệp</option><option>Hộ kinh doanh</option></select></label>
@@ -420,11 +425,12 @@ footer a{color:#f0e2c4;text-decoration:none}
     <label class="full">Vùng nguyên liệu &amp; quy trình<span class="hint">Mỗi dòng một công đoạn: Công đoạn | Địa điểm | Mô tả</span><textarea name="trace" placeholder="Thu hoạch | Vườn Thủy Biều | Thu hái thủ công&#10;Chế biến | Cơ sở … | …"></textarea></label>
 
     <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn btn-tim">Gửi hồ sơ (mô phỏng)</button>
+      <button class="btn btn-tim">Gửi hồ sơ / Cập nhật</button>
       <button type="button" class="btn btn-vien" onclick="fillSample()">Điền dữ liệu mẫu</button>
     </div>
   </form>
   </div>
+  <div class="panel" style="margin-top:18px"><h3>Nội dung bạn đã thêm trên máy này</h3><p class="meta">Ảnh, video và câu chuyện thêm trên trình duyệt chỉ hiện trên máy của bạn. Để công bố cho mọi người: tải ảnh về rồi đưa vào thư mục <code>anh/</code> trên GitHub, và dán phần nội dung vào tệp <code>noi-dung.json</code>.</p><div id="mine"></div></div>
 </section>
 
 <!-- VỀ ĐỀ TÀI -->
@@ -543,6 +549,31 @@ citadel:`<svg viewBox="0 0 300 170"><rect width="300" height="170" fill="#4a2c5e
 bridge:`<svg viewBox="0 0 300 170"><rect width="300" height="170" fill="#f6ecd2"/><rect y="110" width="300" height="60" fill="#8fb7c4"/><g fill="none" stroke="#4a2c5e" stroke-width="3"><path d="M0 100h300"/>${[0,1,2,3,4,5].map(i=>`<path d="M${i*50} 100q25-34 50 0"/>`).join("")}${[0,1,2,3,4,5].map(i=>`<path d="M${i*50+25} 83v17"/>`).join("")}</g><g stroke="#ffffff" stroke-width="2" opacity=".6"><path d="M20 135h40M110 150h50M200 130h60"/></g></svg>`,
 pagoda:`<svg viewBox="0 0 300 170"><rect width="300" height="170" fill="#e2ecd2"/><rect y="140" width="300" height="30" fill="#8fb7c4"/><g fill="#4a2c5e">${[0,1,2,3,4,5,6].map(i=>{const w=58-i*6,y=132-i*15;return `<rect x="${150-w/2}" y="${y-9}" width="${w}" height="10"/><path d="M${150-w/2-8} ${y-8}q8-2 12-7h${w-8}q4 5 12 7z"/>`}).join("")}<path d="M147 20h6v10h-6z"/><rect x="80" y="118" width="18" height="22"/><rect x="202" y="118" width="18" height="22"/></g></svg>`,
 lagoon:`<svg viewBox="0 0 300 170"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3c27a"/><stop offset="1" stop-color="#f6ecd2"/></linearGradient></defs><rect width="300" height="170" fill="url(#sky)"/><circle cx="210" cy="78" r="22" fill="#e07b39" opacity=".8"/><rect y="96" width="300" height="74" fill="#6f9fae"/><g stroke="#2f1a3d" stroke-width="2" fill="none"><path d="M40 96V60M80 96V60M40 60l20-14 20 14M40 60q20 30 40 0"/><path d="M200 96V70M232 96V70M200 70l16-10 16 10"/></g><path d="M110 120q30 10 60 0l-6 8h-48z" fill="#2f1a3d"/><path d="M140 120v-18" stroke="#2f1a3d" stroke-width="2"/></svg>`};
+/* ===================== VIDEO & CÂU CHUYỆN ===================== */
+const LOCAL={};try{Object.assign(LOCAL,JSON.parse(localStorage.getItem("ocop-noidung")||"{}"))}catch(e){}
+function saveLocal(){try{localStorage.setItem("ocop-noidung",JSON.stringify(LOCAL))}catch(e){}}
+function ytId(u){u=String(u||"").trim();const m=u.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{11})/);return m?m[1]:(/^[A-Za-z0-9_-]{11}$/.test(u)?u:null)}
+function applyContent(code,o){const p=PRODUCTS.find(x=>x.code===code);if(!p||!o)return;if(o.video)p.video=o.video;if(o.quote)p.quote=o.quote;if(o.story)p.story=Array.isArray(o.story)?o.story:String(o.story).split(/\n+/).filter(Boolean)}
+function videoHTML(p){const v=p.video;const id=ytId(v);
+  if(id)return `<div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="Video kể chuyện ${esc(p.name)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="meta" style="margin-top:6px"><a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">Mở video trên YouTube ↗</a></p>`;
+  if(v)return `<div class="video"><div class="play">▶</div><b>Video kể chuyện</b><a class="btn btn-vang" href="${esc(v)}" target="_blank" rel="noopener">Mở video ↗</a></div>`;
+  return `<div class="video"><div class="play">▶</div><b>Video kể chuyện</b><small>Chủ thể chưa gửi video</small></div>`}
+function storyEditor(p){const l=LOCAL[p.code]||{};return `<details class="sedit"${l.video||l.story?" open":""}><summary>Dành cho chủ thể: thêm video và câu chuyện</summary>
+  <label>Link YouTube<input id="se-v" value="${esc(l.video||p.video||"")}" placeholder="https://youtu.be/..."></label>
+  <label>Thông điệp một câu<input id="se-q" value="${esc(l.quote||p.quote||"")}"></label>
+  <label>Câu chuyện<textarea id="se-s" rows="4">${esc(l.story||(p.story||[]).join("\n"))}</textarea></label>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-tim" onclick="saveStory('${p.id}')">Xem ngay trên máy này</button><button class="btn btn-vien" onclick="copySnippet('${p.code}')">Sao chép đoạn gửi quản trị</button></div>
+  <p class="meta">“Xem ngay” chỉ hiển thị trên trình duyệt của bạn. Để mọi người cùng thấy, gửi đoạn sao chép cho quản trị viên, hoặc dán vào tệp <code>noi-dung.json</code> trên GitHub.</p></details>`}
+function saveStory(id){const p=prod(id);const v=$("#se-v").value.trim(),q=$("#se-q").value.trim(),s=$("#se-s").value.trim();
+  if(v&&!ytId(v)&&!/^https?:\/\//.test(v)){toast("Link video chưa đúng. Hãy dán link YouTube dạng https://youtu.be/...");return}
+  LOCAL[p.code]={video:v,quote:q,story:s};saveLocal();applyContent(p.code,LOCAL[p.code]);renderProd(id);toast("Đã cập nhật video và câu chuyện trên máy này")}
+function snippet(code){const o=LOCAL[code]||{};const out={};if(o.video)out.video=o.video;if(o.quote)out.quote=o.quote;if(o.story)out.story=o.story;return `"${code}": ${JSON.stringify(out,null,2)}`}
+function copySnippet(code){if(!LOCAL[code]){const v=$("#se-v");if(v){LOCAL[code]={video:v.value.trim(),quote:$("#se-q").value.trim(),story:$("#se-s").value.trim()};saveLocal()}}copyText(snippet(code),"Đã sao chép – dán vào noi-dung.json hoặc gửi quản trị viên")}
+function allSnippet(){const keys=Object.keys(LOCAL).filter(k=>LOCAL[k].video||LOCAL[k].story||LOCAL[k].quote);return "{\n"+keys.map(k=>"  "+snippet(k).replace(/\n/g,"\n  ")).join(",\n")+"\n}"}
+function renderMine(){const el=$("#mine");if(!el)return;const keys=Object.keys(LOCAL).filter(k=>LOCAL[k].video||LOCAL[k].story);const ph=Object.keys(PHOTO);
+  el.innerHTML=(keys.length||ph.length)?`<table><tr><th>Sản phẩm</th><th>Ảnh</th><th>Video</th><th>Câu chuyện</th></tr>${[...new Set([...keys,...ph.map(id=>prod(id)&&prod(id).code)])].filter(Boolean).map(code=>{const p=PRODUCTS.find(x=>x.code===code);const l=LOCAL[code]||{};return `<tr><td><b>${esc(p.name)}</b><br><span class="meta">${code}</span></td><td>${PHOTO[p.id]?`<a href="${PHOTO[p.id]}" download="${code}.jpg">Tải ảnh ${code}.jpg</a>`:"—"}</td><td>${l.video?"✓":"—"}</td><td>${l.story?"✓":"—"}</td></tr>`}).join("")}</table>
+  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-tim" onclick="copyText(allSnippet(),'Đã sao chép toàn bộ nội dung – dán vào noi-dung.json')">Sao chép toàn bộ nội dung (noi-dung.json)</button></div>`:'<p class="meta">Chưa có ảnh, video hay câu chuyện nào được thêm trên máy này.</p>'}
+fetch("noi-dung.json",{cache:"no-store"}).then(r=>r.ok?r.json():{}).then(j=>{for(const k in j){if(k.startsWith("_"))continue;applyContent(k,j[k])}for(const k in LOCAL)applyContent(k,LOCAL[k])}).catch(()=>{for(const k in LOCAL)applyContent(k,LOCAL[k])});
 /* ===================== TRANG CHỦ ===================== */
 function renderHome(){
  const s4=PRODUCTS.filter(p=>p.stars>=4&&!p.pending).length;
@@ -592,7 +623,7 @@ function renderProd(id){
   <div class="upl"><b>Ảnh sản phẩm thực tế</b><span class="meta">Dành cho chủ thể: chọn ảnh chụp sản phẩm để hiển thị trên cổng. Khi đưa website lên máy chủ riêng, chỉ cần đặt ảnh vào thư mục <code>anh/</code> với tên <code>${esc(p.code)}.jpg</code>.</span><label class="btn btn-vien">Chọn ảnh từ máy<input type="file" accept="image/*" hidden onchange="addPhoto('${p.id}',this)"></label></div>`;
  }else if(curTab==="story"){
   body=`<div class="two"><div class="story-txt">${p.quote?`<blockquote style="font-family:Lora,serif;font-style:italic;font-size:18px;color:var(--tim-dam);border-left:3px solid var(--vang);margin:0 0 14px;padding-left:14px">“${esc(p.quote)}”</blockquote>`:""}${(p.story||[]).map(s=>`<p>${esc(s)}</p>`).join("")||`<p><b>${esc(pr.name)}</b> chưa gửi câu chuyện cho sản phẩm này.</p><p class="meta">Câu chuyện nên trả lời ba câu hỏi: sản phẩm ra đời từ đâu; ai làm ra và làm như thế nào; điều gì làm nên nét riêng của Huế trong sản phẩm.</p><a class="btn btn-vien" href="#dang-ky" onclick="closeM('m-prod')">Tôi là chủ thể – gửi câu chuyện</a>`}</div>
-  <div><div class="video"><div class="play">▶</div><b>Video kể chuyện</b><small>${p.video?esc(p.video):"Vị trí nhúng video do chủ thể cung cấp (bản mô phỏng)"}</small></div><p class="meta" style="margin-top:10px">Trường dữ liệu “Câu chuyện” và “Video” được tách riêng trong CSDL để hỗ trợ tiếp thị nội dung.</p></div></div>`;
+  <div>${videoHTML(p)}${storyEditor(p)}</div></div>`;
  }else if(curTab==="trace"){
   body=traceHTML(p);
  }else{
@@ -682,7 +713,12 @@ function makeOrder(f){
 
 /* ===================== ĐĂNG KÝ ===================== */
 function fillSample(){const f=$("#reg");const v={pname:"HTX Rau an toàn Hương Long",ptype:"Hợp tác xã",area:"Hương Long",phone:"0900 000 010",name:"Rau má sấy lạnh",cat:"du",stars:"3",price:65000,unit:"túi 100 g",decision:"Số …/QĐ-UBND (minh hoạ)",desc:"Bột rau má sấy lạnh từ vùng rau an toàn ven sông Hương.",story:"Các hộ thành viên trồng rau má theo quy trình an toàn, thu hái buổi sáng và sấy lạnh trong ngày để giữ màu xanh tự nhiên.",video:"https://youtube.com/… (minh hoạ)",quote:"Màu xanh mát của vườn rau Hương Long",shopee:"https://shopee.vn/…",trace:"Thu hái | Vườn rau Hương Long | Thu hái buổi sáng\nSấy lạnh | Xưởng HTX | Sấy ở nhiệt độ thấp\nĐóng gói | Xưởng HTX | Túi zip, mã QR"};for(const k in v)if(f[k])f[k].value=v[k]}
+function regMode(sel){const f=$("#reg");const on=!!sel.value;["pname","name"].forEach(k=>{f[k].required=!on});if(on){const p=PRODUCTS.find(x=>x.code===sel.value);const pr=prd(p.producer)||{};f.pname.value=pr.name||"";f.name.value=p.name;f.cat.value=p.cat;f.stars.value=p.stars;if(f.area.querySelector(`option[value="${p.area}"]`))f.area.value=p.area;const l=LOCAL[p.code]||{};f.video.value=l.video||p.video||"";f.story.value=l.story||(p.story||[]).join("\n");f.quote.value=l.quote||p.quote||""}}
 function submitReg(f){
+ if(f.exist&&f.exist.value){const code=f.exist.value;const p=PRODUCTS.find(x=>x.code===code);const v=f.video.value.trim();
+  if(v&&!ytId(v)&&!/^https?:\/\//.test(v)){toast("Link video chưa đúng. Hãy dán link YouTube dạng https://youtu.be/...");return}
+  LOCAL[code]={video:v,quote:f.quote.value.trim(),story:f.story.value.trim()};saveLocal();applyContent(code,LOCAL[code]);renderMine();
+  toast(`Đã cập nhật “${p.name}”. Mở sản phẩm, thẻ Câu chuyện để xem video.`);openProd(p.id,"story");return}
  const n=PRODUCTS.length+1,id="p"+n,code="HUE-OCOP-"+String(n).padStart(3,"0");
  const links={};["shopee","tiktok","postmart","web"].forEach(k=>{if(f[k].value.trim())links[k]=1});links.zalo=1;
  PRODUCTS.push({id,code,pending:true,name:f.name.value,cat:f.cat.value,stars:+f.stars.value,area:f.area.value,producer:null,pname:f.pname.value,ptype:f.ptype.value,phone:f.phone.value,price:+f.price.value||0,unit:f.unit.value||"sản phẩm",desc:f.desc.value,quote:f.quote.value,story:f.story.value?f.story.value.split(/\n+/):[],video:f.video.value,specs:{"Quyết định công nhận":f.decision.value||"—"},certs:["OCOP "+f.stars.value+" sao (chờ xác minh)"],links,points:[],trace:f.trace.value.split("\n").filter(Boolean).map(l=>l.split("|").map(s=>s.trim()))});
@@ -710,11 +746,11 @@ function route(){
  document.querySelectorAll(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+v));
  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.v===v));
  document.querySelector("nav").classList.remove("mo");
- if(v==="san-pham")renderProducts();if(v==="diem-ban")renderMap();if(v==="chu-the")renderProducers();
+ if(v==="san-pham")renderProducts();if(v==="dang-ky")renderMine();if(v==="diem-ban")renderMap();if(v==="chu-the")renderProducers();
  window.scrollTo(0,0);
 }
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeM("m-prod");closeM("m-order")}});
-initFilters();renderHome();renderSchema();renderProducers();window.addEventListener("hashchange",route);route();
+initFilters();$("#reg-exist").innerHTML+=PRODUCTS.slice().sort((a,b)=>a.name.localeCompare(b.name,"vi")).map(p=>`<option value="${p.code}">${esc(p.name)} (${p.code})</option>`).join("");renderHome();renderSchema();renderProducers();window.addEventListener("hashchange",route);route();
 </script>
 </body>
 </html>

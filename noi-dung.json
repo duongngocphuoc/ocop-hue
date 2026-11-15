@@ -1,0 +1,8 @@
+{
+  "_huong_dan": "Thêm video, câu chuyện cho sản phẩm theo mã (xem mã ở thẻ Thông tin của sản phẩm). Mỗi sản phẩm một khối, các khối cách nhau bằng dấu phẩy. Các khoá bắt đầu bằng dấu gạch dưới (_) chỉ là ghi chú, website bỏ qua.",
+  "_vi_du": {
+    "video": "https://youtu.be/MA-VIDEO-11-KY-TU",
+    "quote": "Thông điệp một câu về sản phẩm",
+    "story": "Đoạn 1 của câu chuyện.\nĐoạn 2 của câu chuyện."
+  }
+}
