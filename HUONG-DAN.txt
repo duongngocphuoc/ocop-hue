@@ -1,0 +1,37 @@
+HƯỚNG DẪN ĐƯA WEBSITE "OCOP HUẾ SỐ" LÊN MẠNG VÀ THÊM HÌNH ẢNH
+================================================================
+
+1. ĐƯA LÊN MẠNG VỚI ĐƯỜNG LINK RIÊNG (miễn phí)
+
+Cách A – Netlify Drop (nhanh nhất, khoảng 2 phút)
+  - Mở trang https://app.netlify.com/drop và đăng nhập (có thể dùng tài khoản Google hoặc GitHub).
+  - Kéo cả thư mục "ocop-hue-website" thả vào trang.
+  - Netlify cấp ngay một đường link dạng https://ten-ngau-nhien.netlify.app
+  - Vào "Site configuration" (cấu hình trang) để đổi tên, ví dụ: https://ocophue.netlify.app (nếu tên còn trống).
+
+Cách B – GitHub Pages
+  - Tạo kho mã (repository) mới trên GitHub, ví dụ "ocophue".
+  - Tải toàn bộ nội dung thư mục này lên kho.
+  - Vào Settings > Pages, chọn nhánh "main" và thư mục gốc rồi lưu.
+  - Đường link sẽ có dạng https://ten-tai-khoan.github.io/ocophue
+
+Muốn dùng tên miền riêng (ví dụ ocophue.vn): mua tên miền rồi khai báo trong Netlify hoặc GitHub Pages.
+
+2. THÊM ẢNH THẬT (đặt vào thư mục "anh", đúng tên file)
+
+  - Logo Chương trình OCOP:        anh/logo-ocop.png
+    (chỉ dùng file logo chính thức khi được phép sử dụng)
+  - Ảnh sản phẩm:                  anh/HUE-OCOP-001.jpg, anh/HUE-OCOP-002.jpg, ...
+    Mã sản phẩm hiển thị trong mục "Thông tin" của từng sản phẩm.
+  - Ảnh Huế ở trang chủ:           anh/hue-1.jpg (Kinh thành), anh/hue-2.jpg (sông Hương, cầu Trường Tiền),
+                                   anh/hue-3.jpg (chùa Thiên Mụ), anh/hue-4.jpg (phá Tam Giang)
+
+  Ảnh nào chưa có, website tự hiển thị hình minh hoạ vẽ sẵn.
+  Nên dùng ảnh tự chụp, ảnh do chủ thể cung cấp, hoặc ảnh có giấy phép sử dụng tự do
+  (ví dụ ảnh trên Wikimedia Commons, ghi nguồn tác giả theo giấy phép).
+  Kích thước gợi ý: chiều rộng khoảng 800–1200 điểm ảnh, dung lượng dưới 300 KB mỗi ảnh.
+
+3. NGUỒN DỮ LIỆU
+  - 115 sản phẩm: Danh sách các sản phẩm OCOP đã được công nhận (đến 9/5/2025).
+  - Số liệu tổng hợp: Báo cáo số 2068/BC-SNNMT, Sở Nông nghiệp và Môi trường thành phố Huế.
+  - Giá, quy cách, điểm bán và liên kết gian hàng là dữ liệu minh hoạ.
