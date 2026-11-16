@@ -32,7 +32,7 @@ Muốn dùng tên miền riêng (ví dụ ocophue.vn): mua tên miền rồi kha
   Kích thước gợi ý: chiều rộng khoảng 800–1200 điểm ảnh, dung lượng dưới 300 KB mỗi ảnh.
 
 3. NGUỒN DỮ LIỆU
-  - 115 sản phẩm: Danh sách các sản phẩm OCOP đã được công nhận (đến 9/5/2025).
+  - 115 sản phẩm: Danh sách các sản phẩm OCOP đã được công nhận (đến 30/6/2026).
   - Số liệu tổng hợp: Báo cáo số 2068/BC-SNNMT, Sở Nông nghiệp và Môi trường thành phố Huế.
   - Giá, quy cách, điểm bán và liên kết gian hàng là dữ liệu minh hoạ.
 
